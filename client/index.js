@@ -13,14 +13,13 @@ app.set('view engine', 'hbs');
 app.set('views', './views');
 
 app.get('/', (request, response) => {
-    response.render('home' , {
-        layout: 'header', 
-
-    })
+    response.render('home') 
 })
 
 app.get('/home', (request, response) => {
-    response.render('home')
+    response.render('home', {
+        title: 'Home page'
+    })
 } )
 
 app.get('/post', (req, res) => {
@@ -29,7 +28,9 @@ app.get('/post', (req, res) => {
         description: 'Some post description',
         author: 'Root',
     }
-    res.render('post', { post })
+    res.render('post', { post,
+        title: 'post page'
+    })
 });
 
 
