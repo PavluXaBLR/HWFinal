@@ -1,4 +1,3 @@
-const { request, response } = require('express');
 const express = require ('express');
 const handlebars = require('express-handlebars'); 
 
@@ -11,6 +10,7 @@ app.engine('hbs', handlebars.engine({
 app.set('view engine', 'hbs');
 
 app.set('views', './views');
+app.set('img', '.views/img');
 
 app.get('/', (request, response) => {
     response.render('home') 
@@ -24,16 +24,18 @@ app.get('/home', (request, response) => {
 
 app.get('/post', (req, res) => {
     const post = {
-        title: 'It is new post',
-        description: 'Some post description',
-        author: 'Root',
-    }
+		name: 'name 1',
+		body: "body 1",
+		categories: "news" ,
+		author: "Boby"
+	}
+	
     res.render('post', { post,
         title: 'post page'
     })
 });
 
 
-app.listen (3000, () => {
+app.listen (4000, () => {
     console.log ("Servak pasha, but he not Pasha")
 });
